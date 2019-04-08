@@ -184,16 +184,20 @@ anyhingYouWant = 'BRAH!';
 			</section>
 
 			<section>
-				<h2>Typowanie funkcji</h2>
+				<h2 class="font-dense">Typowanie funkcji</h2>
 				<div class="langed-snipped">
 					<span class="js">JS</span>
 					<pre>
-							<code class="hljs javascript">function add(a,b) {
+							<code class="hljs javascript">function add(a, b) {
   return a + b;
-}</code>
+}
+add(3,5); // => 8
+add([], '?????'); // => "??"
+
+</code>
 						</pre>
 				</div>
-				<div class="langed-snipped">
+				<div class="fragment langed-snipped">
 					<span class="ts">TS</span>
 					<pre>
 								<code class="hljs javascript">function add(a: number, b:number): number {
@@ -209,7 +213,8 @@ anyhingYouWant = 'BRAH!';
 			</section>
 
 			<section>
-				<h2>Interfejsy</h2>
+				<h2>Interfejs
+					y</h2>
 				<pre>
 						<code class="hljs typescript">interface IPerson {
 	name: string;
@@ -253,15 +258,15 @@ class Student implements IPerson {
   sayHi() {
     console.log(`Imma ${this.name}!~~`);
   }
-}
-							</code>
+}</code>
 				</pre>
 			</section>
 			<section>
 				<h2>Zieeeew</h2>
 				<h3>Czy to kolejna <strike>Java</strike>/C# ?</h3>
+				<img src="img/thinking.png" style="max-height: 220px" />
 				<p class="fragment"> 
-					Odpowiedź brzmiałaby <strong>tak</strong> gdyby nie typescript ~ 2.1
+					Odpowiedź brzmiałaby <strong class="hljs-name">tak</strong> gdyby nie typescript ~ 2.1
 				</p>
 			</section>
 
