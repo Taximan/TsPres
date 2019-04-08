@@ -1,49 +1,325 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>TS Pres</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+
+	<style>
+		.dense-font {
+			font-size: 0.75em;
+		}
+
+		.js {
+			max-width: 50px;
+			background: #f7df1e;
+			padding: 24px 8px 2px 24px;
+			color: black;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+
+		.ts {
+			max-width: 50px;
+			background: #007acc;
+			padding: 24px 8px 2px 24px;
+			color: white;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+
+		.langed-snipped {
+			display: flex;
+			flex-flow: column nowrap;
+			justify-content: center;
+		}
+
+		.langed-snipped pre {
+			margin: 0;
+		}
+
+		.flash-green-bg {
+			background: greenyellow;
+		}
+
+		#RevealLuckyNumberType-Code {
+			font-size: 2em;
+			overflow: visible;
+		}
+	</style>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section></section>
+			<section data-transition="slide" data-background="#007acc" data-background-transition="zoom">
+				<h1>Typescript</h1>
+				<h2>w praktyce</h2>
+			</section>
+			<section>
+				<h2>Deklaracja zmiennej</h2>
+				<div class="fragment langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+						<code class="hljs javascript">let helllo = 'world';</code>
+					</pre>
+				</div>
+				<div class="fragment langed-snipped">
+					<span class="ts">TS</span>
+					<pre>
+						<code class="hljs typescript">let helllo: string = 'world';</code>
+						<code class="hljs typescript fragment">
+const PI: number = 3.14;
+var maybeTrueMaybeFalse: boolean = Math.random() > 0.5;
+						</code>
+					</pre>
+				</div>
+			</section>
+			<section>
+				<h2>Typy Singletonowe</h2>
+				<div>
+					<pre>
+					<code class="hljs typescript" id="RevealLuckyNumberType-Code">let luckyNumber = 4;</code>
+				</pre>
+				</div>
+				<p class="fragment" data-show-event="RevealLuckyNumberType">
+				</p>
+				<p class="fragment">
+					<img src="img/singletonTypErr.png" />
+				</p>
+				<pre class="fragment">
+					<code class="hljs typescript">
+const immaString: 'immaString' = 'immaString';
+const alwaysTrue: true = true;
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Tablice</h2>
+				<pre class="fragment">
+						<code class="hljs typescript" >const ages: number[] = [27, 25];
+const names: string[] = ['John', 'Jaine'];
+						</code>
+					</pre>
+			</section>
+			<section>
+				<h2>Tablice - jako pary (tuple)</h2>
+				<pre class="fragment">
+							<code class="hljs typescript">
+const weightNamePair: [number, string]  = [27, 'John'];
+							</code>
+						</pre>
+				<div class="fragment">
+					<p>Możemy łączyć tablicę oraz "tuple"</p>
+					<pre>
+								<code class="hljs typescript" style="overflow:  hidden">
+const weightNamePairs: [number, string][] = [
+	[27, 'John'],
+	[25, 'Jaine']
+];
+								</code>
+							</pre>
+				</div>
+			</section>
+			<section>
+				<h2>Typ - <span class="hljs-name" style="text-transform: lowercase">any</span></h2>
+				<p>
+					<span class="hljs-name" style="text-transform: lowercase">any</span> to specjalny typ do którego
+					możemy przypisać <strong>dowolną</strong> wartość.
+				</p>
+				<div class="fragment">
+					<pre>
+									<code class="hljs typescript" style="overflow:  hidden">
+let anyhingYouWant: any = true;
+anyhingYouWant = null;
+anyhingYouWant = 'BRAH!';
+									</code>
+						</pre>
+
+				</div>
+				<p class="fragment">Pozwala na "wyłączenie" sprawdzania typów. Przydatne gdy nie potrafimy wyrazić
+					jakiegoś typu lub
+					po prostu eksperymentujemy.</p>
+			</section>
+			<section>
+				<h2 class="dense-font">Typ - <span class="hljs-name" style="text-transform: lowercase">never</span></h2>
+				<p class="dense-font">
+					<span class="hljs-name" style="text-transform: lowercase">never</span> to specjalny typ do którego
+					nie możemy przypisać <strong>żadnej</strong> wartości
+				</p>
+				<img class="fragment" src="img/never-assing.png" />
+				<p class="fragment dense-font">Symbolizuje wartość która nigdy nie istnieje.
+					Byłby to np. typ zwracany z funkcji która nigdy się nie powodzi lub nigdy się nie kończy
+					np. funkcja która wykonuję: while(<span class="hljs-name">true</span>){}
+				</p>
+			</section>
+
+
+			<section>
+				<h2>Inferencja typów</h2>
+				<p class="fragment dense-font">Wypisywanie ciągle tych typów po dwukroku wygląda męcząco...</p>
+				<p class="fragment dense-font">...naszczęście w sporej ilości przypadków Typescript jest w stanie samemu
+					wydedukować sobie typ z kontesktu naszego programu.</p>
+				<img src="img/infer_demo.png" class="fragment" />
+			</section>
+
+			<section>
+				<h2>Typowanie funkcji</h2>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+							<code class="hljs javascript">function add(a,b) {
+  return a + b;
+}</code>
+						</pre>
+				</div>
+				<div class="langed-snipped">
+					<span class="ts">TS</span>
+					<pre>
+								<code class="hljs javascript">function add(a: number, b:number): number {
+  return a + b;
+}</code>
+							</pre>
+				</div>
+			</section>
+
+
+			<section>
+				<h2>Typowanie obiektów</h2>
+			</section>
+
+			<section>
+				<h2>Interfejsy</h2>
+				<pre>
+						<code class="hljs typescript">interface IPerson {
+	name: string;
+	age: number;
+	sayHi(): void;
+}</code>
+			</pre>
+				<p>
+					Deklarują <strong>kształt</strong> danego obiektu. Mogą zawierać pola jak i metody.
+				</p>
+			</section>
+
+			<section>
+				<h2>Interfejsy - użycie</h2>
+				<p class="dense-font">W przeciwieństwie do innych języków programowania nie musimy interfejsów
+					implementować.
+					Możemy stworzyć <i>ad-hoc</i> implemetancje danego interfejsu </p>
+				<pre>
+						<code class="hljs typescript" style="overflow: hidden">const me: IPerson = { 
+  name: 'Dawid',
+  age: 24,
+  sayHi() {
+    console.log('hi!');
+  }							
+}</code>
+			</section>
+
+			<section>
+				<h2>Klasy</h2>
+				<pre>
+							<code class="hljs typescript">
+class Student implements IPerson {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  sayHi() {
+    console.log(`Imma ${this.name}!~~`);
+  }
+}
+							</code>
+				</pre>
+			</section>
+			<section>
+				<h2>Zieeeew</h2>
+				<h3>Czy to kolejna <strike>Java</strike>/C# ?</h3>
+				<p class="fragment"> 
+					Odpowiedź brzmiałaby <strong>tak</strong> gdyby nie typescript ~ 2.1
+				</p>
+			</section>
+
 		</div>
+	</div>
 
-		<script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			hash: true,
+			controls: true,
+			progress: true,
+			center: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true }
+			]
+		});
+
+		const fragEvents = {
+			cbs: {},
+			on(type, cb) {
+				if (this.cbs[type] === undefined) {
+					this.cbs[type] = [];
+				}
+				this.cbs[type].push(cb);
+			},
+			dispatch(type) {
+				if (this.cbs[type] != undefined) {
+					this.cbs[type].forEach(cb => cb());
+				}
+			}
+		}
+
+		Reveal.addEventListener('fragmentshown', function (ev) {
+			const el = ev.fragment;
+			if (el && el.getAttribute('data-show-event') != null) {
+				const attr = el.getAttribute('data-show-event');
+				fragEvents.dispatch(attr);
+			}
+		});
+
+		fragEvents.on('RevealLuckyNumberType', function () {
+			const el = document.getElementById('RevealLuckyNumberType-Code');
+			el.style = 'transition: background 200ms ease-in';
+			el.classList.add('flash-green-bg');
+			setTimeout(() => el.classList.remove('flash-green-bg'), 200);
+			el.innerHTML = 'let luckyNumber: 4 = 4;';
+			hljs.initHighlighting();
+		});
+
+	</script>
+</body>
+
 </html>
