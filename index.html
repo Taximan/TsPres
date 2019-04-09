@@ -56,6 +56,10 @@
 			font-size: 2em;
 			overflow: visible;
 		}
+
+		.hljs {
+			overflow: hidden !important;
+		}
 	</style>
 
 	<!-- Printing and PDF exports -->
@@ -165,7 +169,7 @@ anyhingYouWant = 'BRAH!';
 				<h2 class="dense-font">Typ - <span class="hljs-name" style="text-transform: lowercase">never</span></h2>
 				<p class="dense-font">
 					<span class="hljs-name" style="text-transform: lowercase">never</span> to specjalny typ do którego
-					nie możemy przypisać <strong>żadnej</strong> wartości
+					nie możemy przypisać <strong style="text-decoration: underline">żadnej</strong> wartości
 				</p>
 				<img class="fragment" src="img/never-assing.png" />
 				<p class="fragment dense-font">Symbolizuje wartość która nigdy nie istnieje.
@@ -191,19 +195,36 @@ anyhingYouWant = 'BRAH!';
 							<code class="hljs javascript">function add(a, b) {
   return a + b;
 }
-add(3,5); // => 8
-add([], '?????'); // => "??"
 
 </code>
 						</pre>
+					<div class="fragment">
+						<p style="text-align: left">Wywołanie</p>
+						<pre>
+								<code class="hljs javascript">add(3,5); // => 8
+add([], '?????'); // => "??"</code>
+					</pre>
+					</div>
+
 				</div>
-				<div class="fragment langed-snipped">
+			</section>
+			<section>
+				<h2 class="font-dense">Typowanie funkcji</h2>
+				<div class="langed-snipped">
 					<span class="ts">TS</span>
 					<pre>
 								<code class="hljs javascript">function add(a: number, b:number): number {
   return a + b;
 }</code>
 							</pre>
+					<div class="fragment">
+						<p style="text-align: left">Wywołanie</p>
+						<pre>
+									<code class="hljs javascript">add(3,5); // => 8
+add([], '???'); // błąd
+	</code>
+								</pre>
+					</div>
 				</div>
 			</section>
 
@@ -265,11 +286,121 @@ class Student implements IPerson {
 				<h2>Zieeeew</h2>
 				<h3>Czy to kolejna <strike>Java</strike>/C# ?</h3>
 				<img src="img/thinking.png" style="max-height: 220px" />
-				<p class="fragment"> 
+				<p class="fragment">
 					Odpowiedź brzmiałaby <strong class="hljs-name">tak</strong> gdyby nie typescript ~ 2.1
 				</p>
 			</section>
-
+			<section>
+				<h2>Zaanwansowane typy danych</h2>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+									<code class="hljs javascript">padLeft("world", 4) === "    world";
+padLeft("world", "hello ") === "hello world"</code>
+							</pre>
+				</div>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+								<code class="hljs javascript" data-line-numbers="2">
+function padLeft(value, padding) {
+	if (typeof padding === "string") {
+		return padding + value;
+	}
+	if (typeof padding === "number") {
+		return Array(padding + 1).join(" ") 
+			+ value;
+	}
+	throw new Error(`Expected string or
+		 number, got '${padding}'.`);
+}
+								</code>
+						</pre>
+				</div>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+									<code class="hljs javascript"  data-line-numbers="3-5">
+function padLeft(value, padding) {
+	if (typeof padding === "string") {
+		return padding + value;
+	}
+	if (typeof padding === "number") {
+		return Array(padding + 1).join(" ") 
+			+ value;
+	}
+	throw new Error(`Expected string or
+			number, got '${padding}'.`);
+}
+									</code>
+							</pre>
+				</div>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+										<code class="hljs javascript"  data-line-numbers="5-9">
+function padLeft(value, padding) {
+	if (typeof padding === "string") {
+		return padding + value;
+	}
+	if (typeof padding === "number") {
+		return Array(padding + 1).join(" ") 
+			+ value;
+	}
+	throw new Error(`Expected string or
+			number, got '${padding}'.`);
+}
+										</code>
+								</pre>
+				</div>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="js">JS</span>
+					<pre>
+											<code class="hljs javascript"  data-line-numbers="10-11">
+function padLeft(value, padding) {
+	if (typeof padding === "string") {
+		return padding + value;
+	}
+	if (typeof padding === "number") {
+		return Array(padding + 1).join(" ") 
+			+ value;
+	}
+	throw new Error(`Expected string or
+			number, got '${padding}'.`);
+}
+											</code>
+									</pre>
+				</div>
+			</section>
+			<section>
+				<div class="langed-snipped">
+					<span class="ts">TS</span>
+					<pre>
+													<code class="hljs javascript">
+function padLeft(value: string, padding: ???) {
+													</code>
+					</pre>
+					<p style="text-align: left">any?</p>
+					<div class="fragment">
+						<p style="text-align: left">unie!</p>
+						<pre>
+								<code class="hljs javascript" data-trim data-noescape>
+function padLeft(value: string, padding: <mark>string | number</mark>) {
+								</code>
+</pre>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
 
