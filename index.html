@@ -283,6 +283,44 @@ class Student implements IPerson {
 				</pre>
 			</section>
 			<section>
+				<h2>Klasy</h2>
+				<pre>
+								<code class="hljs typescript" data-trim data-noescape>
+	class Student implements <mark>IPerson</mark> {
+	  name: string;
+	  age: number;
+	
+	  constructor(name: string, age: number) {
+		this.name = name;
+		this.age = age;
+	  }
+	
+	  sayHi() {
+		console.log(`Imma ${this.name}!~~`);
+	  }
+	}</code>
+					</pre>
+			</section>
+			<section>
+				<h2>Klasy</h2>
+				<pre>
+									<code class="hljs typescript" data-trim data-noescape>
+		class Student implements IPerson {<mark>
+		  name: string;
+		  age: number;</mark>
+		
+		  constructor(name: string, age: number) {
+			this.name = name;
+			this.age = age;
+		  }
+		
+		  sayHi() {
+			console.log(`Imma ${this.name}!~~`);
+		  }
+		}</code>
+						</pre>
+			</section>
+			<section>
 				<h2>Zieeeew</h2>
 				<h3>Czy to kolejna <strike>Java</strike>/C# ?</h3>
 				<img src="img/thinking.png" style="max-height: 220px" />
@@ -386,21 +424,94 @@ function padLeft(value, padding) {
 				<div class="langed-snipped">
 					<span class="ts">TS</span>
 					<pre>
-													<code class="hljs javascript">
-function padLeft(value: string, padding: ???) {
+													<code class="hljs typescript">
+function padLeft(value: string, padding: ???): string {
 													</code>
 					</pre>
-					<p style="text-align: left">any?</p>
+					<p style="text-align: left">hierarchia klas, any?</p>
 					<div class="fragment">
 						<p style="text-align: left">unie!</p>
 						<pre>
 								<code class="hljs javascript" data-trim data-noescape>
-function padLeft(value: string, padding: <mark>string | number</mark>) {
+function padLeft(value: string, padding: <mark>string | number</mark>)
+	: string {
 								</code>
 </pre>
 					</div>
 				</div>
 			</section>
+
+			<section>
+				<h2>Unie</h2>
+				<img src="img/union_types.png" />
+			</section>
+
+			<section>
+				<h2>Strażniki typu</h2>
+				<p>(type guards)</p>
+				<img src="img/type_guards.png" />
+			</section>
+
+			<section>
+				<h2>Strażniki typu</h2>
+				<p>w akcji</p>
+				<img src="img/type_guards_in_action.png" />
+			</section>
+
+			<section>
+				<h2>Aliasy typów</h2>
+				<p>Pozwalają nadać alternatywną nazwę innemu typowi</p>
+				<p><span class="hljs-name">type</span> AlternatywnaNazwa = InnyTyp;</p>
+				<img src="img/aliasing.png" class="fragment" />
+			</section>
+
+			<section>
+				<h2>Aliasy typów</h2>
+				<p>Szczególnie przydatne jeżeli używamy uni</p>
+				<img src="img/aliasing_inaction.png" />
+			</section>
+
+			<section>
+				<h2>Poznaliśmy</h2>
+				<ul>
+					<li>Interfejsy</li>
+					<li class="fragment">Unię</li>
+					<li class="fragment">Strażniki typów</li>
+					<li class="fragment">Aliasy</li>
+				</ul>
+				<p class="fragment">Zobaczmy co się stanie gdy połączymy je razem! 🔥</p>
+			</section>
+
+			<section>
+				<p>Zadeklarujmy kilka interfejsów</p>
+				<img src="img/ifaces.png" />
+			</section>
+
+			<section>
+				<img src="img/shapealias.png" />
+				<img class="fragment" src="img/shapes.png" />
+			</section>
+			<section>
+				<h2>Możemy teraz budować abstrakcje na tym <i style="font-style: italic; text-decoration: underline">zamkniętym</i> zbiorze typów</h2>
+			</section>
+			<section>
+
+				<pre>
+							<code class="hljs javascript" data-trim data-noescape data-line-numbers="1">
+								function area(shape: Shape):  number {
+							</code>
+					</pre>
+				<p><span class="hljs-variable">area</span> zwróci nam pole dla danego <span
+						class="hljs-name">Shape</span></p>
+			</section>
+			<section>
+				<h2>ad-hoc Polimorfizm</h2>
+				<p>Możemy budować abstrakcje na luźno powiązanych ze sobą typów.
+					Jeżeli jesteśmy w stanie wykazać kompilatorowi, że danym momencie działamy na tym konkrentym typie
+				</p>
+
+			</section>
+
 		</div>
 	</div>
 
