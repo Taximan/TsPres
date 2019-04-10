@@ -60,6 +60,43 @@
 		.hljs {
 			overflow: hidden !important;
 		}
+
+
+		.ts-diagram-wrapper {
+			position: relative;
+		}
+
+		.jsCircle {
+			position: absolute;
+			left: calc(50% - 150px);
+			top: 0;
+			color: black;
+			background-color: #f7df1e;
+			width: 300px;
+			height: 300px;
+			border-radius: 300px;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.tsCircle {
+			position: absolute;
+			left: calc(50% - 150px);
+			top: 0;
+			color: black;
+			background-color: #007acc;
+			color: white;
+			z-index: -1;
+			width: 500px;
+			height: 500px;
+			border-radius: 500px;
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+		}
 	</style>
 
 	<!-- Printing and PDF exports -->
@@ -79,6 +116,14 @@
 			<section data-transition="slide" data-background="#007acc" data-background-transition="zoom">
 				<h1>Typescript</h1>
 				<h2>w praktyce</h2>
+			</section>
+			<section>
+				<h2>Czym jest typescript?</h2>
+				<div class="ts-diagram-wrapper fragment">
+					<div class="jsCircle" style="transform: translate3d(26px, 32px, 0)">Javascript</div>
+					<div class="tsCircle fragment"><span style="transform: translate3d(42px,120px,0)">Typescript</span>
+					</div>
+				</div>
 			</section>
 			<section>
 				<h2>Deklaracja zmiennej</h2>
@@ -584,12 +629,27 @@ function padLeft(value: string, padding: <mark>string | number</mark>)
 				<p>Należy rzucić wyjątek jeżeli zapomnieliśmy obsłużyć jakiejś opcji</p>
 			</section>
 
+			<section>
+				<img src="img/compier_support.png" />
+				<p>Typescript wie, że jakie mamy typy w <span class="hljs-variable">case</span>'ach' </p>
+			</section>
 
 			<section>
-				<h2>ad-hoc Polimorfizm</h2>
-				<p>Możemy budować abstrakcje na luźno powiązanych ze sobą typów.
-					Jeżeli jesteśmy w stanie wykazać kompilatorowi, że danym momencie działamy na tym konkrentym typie
+				<h2>A więc co zrobiliśmy?</h2>
+				<ul>
+					<li>Zbudowaliśmy abstrakcję na luźno, ze sobą powiązanych typach</li>
+					<li>Rożnie zainterpretowaliśmy daną zmienną zależnie od kontesktu</li>
+					<li>W tym wszystkim wsparł nas kompilator</li>
+				</ul>
+				<p class="fragment">Wzorzec ten jest również znany jako <strong
+						style="text-decoration: underline">Algebraiczne typy
+						danych, otagowane unie</strong> i jest często używany w <strong
+						style="text-decoration: underline">funkcyjnym</strong> stylu programowania</p>
 				</p>
+			</section>
+
+			<section>
+
 			</section>
 
 
