@@ -492,10 +492,10 @@ function padLeft(value: string, padding: <mark>string | number</mark>)
 				<img class="fragment" src="img/shapes.png" />
 			</section>
 			<section>
-				<h2>Możemy teraz budować abstrakcje na tym <i style="font-style: italic; text-decoration: underline">zamkniętym</i> zbiorze typów</h2>
+				<h2>Możemy teraz budować abstrakcje na tym <i
+						style="font-style: italic; text-decoration: underline">zamkniętym</i> zbiorze typów</h2>
 			</section>
 			<section>
-
 				<pre>
 							<code class="hljs javascript" data-trim data-noescape data-line-numbers="1">
 								function area(shape: Shape):  number {
@@ -505,12 +505,93 @@ function padLeft(value: string, padding: <mark>string | number</mark>)
 						class="hljs-name">Shape</span></p>
 			</section>
 			<section>
+				<pre>
+					<code class="hljs javascript" data-trim data-noescape data-line-numbers="2">
+						function area(s: Shape): number {
+							switch (s.kind) {
+								case "square":
+									return s.size ** 2;
+								case "rectangle":
+									return s.height * s.width;
+								case "circle":
+									return Math.PI * s.radius ** 2;
+								default:
+									throw new Error(`Expected Shape, got ${s}`);
+							}
+						}
+					</code>
+				</pre>
+				<p>Pierw zobaczmy z czym mamy do czynienia. Wcześniej nadany tag się tutaj przydaje!</p>
+			</section>
+			<section>
+				<pre>
+					<code class="hljs javascript" data-trim data-noescape data-line-numbers="3-4">
+						function area(s: Shape): number {
+							switch (s.kind) {
+								case "square":
+									return s.size ** 2;
+								case "rectangle":
+									return s.height * s.width;
+								case "circle":
+									return Math.PI * s.radius ** 2;
+								default:
+									throw new Error(`Unexpected obj:${s}`);
+								}
+						}	
+						</code>
+				</pre>
+				<p>Dla kwadratu weźmiemy długość jego boku</p>
+				<p class="fragment">(** - operator podnoszenia do potęgi)</p>
+			</section>
+
+			<section>
+				<pre>
+					<code class="hljs javascript" data-trim data-noescape data-line-numbers="5-8">
+						function area(s: Shape): number {
+							switch (s.kind) {
+								case "square":
+									return s.size ** 2;
+								case "rectangle":
+									return s.height * s.width;
+								case "circle":
+									return Math.PI * s.radius ** 2;
+								default:
+									throw new Error(`Unexpected obj:${s}`);
+							}
+						}	
+						</code>
+				</pre>
+				<p>Analogicznie postępujemy dla innych tagów</p>
+			</section>
+
+			<section>
+				<pre>
+					<code class="hljs javascript" data-trim data-noescape data-line-numbers="9-11">
+							function area(s: Shape): number {
+								switch (s.kind) {
+									case "square":
+										return s.size ** 2;
+									case "rectangle":
+										return s.height * s.width;
+									case "circle":
+										return Math.PI * s.radius ** 2;
+									default:
+									    throw new Error(`Unexpected obj:${s}`);
+								}
+							}	
+					</code>
+					</pre>
+				<p>Należy rzucić wyjątek jeżeli zapomnieliśmy obsłużyć jakiejś opcji</p>
+			</section>
+
+
+			<section>
 				<h2>ad-hoc Polimorfizm</h2>
 				<p>Możemy budować abstrakcje na luźno powiązanych ze sobą typów.
 					Jeżeli jesteśmy w stanie wykazać kompilatorowi, że danym momencie działamy na tym konkrentym typie
 				</p>
-
 			</section>
+
 
 		</div>
 	</div>
