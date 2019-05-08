@@ -295,15 +295,12 @@ add([], '???'); // błąd
 }</code>
 			</pre>
 				<p>
-					Deklarują <strong>kształt</strong> danego obiektu. Mogą zawierać pola jak i metody.
+					Deklarują <strong><u>kształt</u></strong> danego obiektu. Mogą zawierać pola jak i metody.
 				</p>
 			</section>
 
 			<section>
 				<h2>Interfejsy - użycie</h2>
-				<p class="dense-font">W przeciwieństwie do innych języków programowania nie musimy interfejsów
-					implementować.
-					Możemy stworzyć <i>ad-hoc</i> implemetancje danego interfejsu </p>
 				<pre>
 						<code class="hljs typescript" style="overflow: hidden">const me: IPerson = { 
   name: 'Dawid',
@@ -312,6 +309,37 @@ add([], '???'); // błąd
     console.log('hi!');
   }							
 }</code>
+</pre>
+				<p class="dense-font fragment">Tak samo jak w Javascriptcie możemy "po prostu" tworzyć obiekty. Tak samo w
+					Typescriptcie
+					możemy "po prostu" tworzyć instancję naszych interfejsów </p>
+
+			</section>
+			<section>
+				<p class="dense-font">
+					<pre>
+						<code class="hljs typescript" style="overflow: hidden" data-trim data-noescape>
+							
+							function printAge(person: IPerson) {
+							  console.log(person.age);
+							}
+							<span class="fragment">
+							const user = { name: 'Dawid', age: 24, sayHi() { /*...*/ }  };
+							printAge(user);
+						</span>
+						</code>
+					</pre>
+				</p>
+				<p class="fragment">
+					Zauważmy:
+					<ul>
+						<li class="fragment">Nie musimy typescriptowi deklarować, że <span class="hljs-variable">user</span> jest
+							typu <span class="hljs-type">IPerson</span></li>
+						<li class="fragment">Typy są zgodne jeżeli ich wewnętrzna struktura jest taka sama. Takie typowanie nazywamy
+							<u>strukturalnym</u>.
+						</li>
+					</ul>
+				</p>
 			</section>
 
 			<section>
@@ -333,44 +361,7 @@ class Student implements IPerson {
 }</code>
 				</pre>
 			</section>
-			<section>
-				<h2>Klasy</h2>
-				<pre>
-								<code class="hljs typescript" data-trim data-noescape>
-	class Student implements <mark>IPerson</mark> {
-	  name: string;
-	  age: number;
-	
-	  constructor(name: string, age: number) {
-		this.name = name;
-		this.age = age;
-	  }
-	
-	  sayHi() {
-		console.log(`Imma ${this.name}!~~`);
-	  }
-	}</code>
-					</pre>
-			</section>
-			<section>
-				<h2>Klasy</h2>
-				<pre>
-									<code class="hljs typescript" data-trim data-noescape>
-		class Student implements IPerson {<mark>
-		  name: string;
-		  age: number;</mark>
-		
-		  constructor(name: string, age: number) {
-			this.name = name;
-			this.age = age;
-		  }
-		
-		  sayHi() {
-			console.log(`Imma ${this.name}!~~`);
-		  }
-		}</code>
-						</pre>
-			</section>
+
 			<section>
 				<h2>Zieeeew</h2>
 				<h3>Czy to kolejna <strike>Java</strike>/C# ?</h3>
@@ -390,6 +381,7 @@ class Student implements IPerson {
 padLeft("world", "hello ") === "hello world"</code>
 							</pre>
 				</div>
+				<p>Idiomatyczne Javascriptowe API są często bardzo dynamiczne..</p>
 			</section>
 			<section>
 				<div class="langed-snipped">
@@ -472,6 +464,9 @@ function padLeft(value, padding) {
 				</div>
 			</section>
 			<section>
+				<p>Wygląda prosto, zróbmy to w Typescriptcie!</p>
+			</section>
+			<section>
 				<div class="langed-snipped">
 					<span class="ts">TS</span>
 					<pre>
@@ -495,12 +490,14 @@ function padLeft(value: string, padding: <mark>string | number</mark>)
 			<section>
 				<h2>Unie</h2>
 				<img src="img/union_types.png" />
+				<p class="fragment">Stworzenie uni jest łatwe, ale jak ją poźniej użyć?</p>
 			</section>
 
 			<section>
 				<h2>Strażniki typu</h2>
 				<p>(type guards)</p>
 				<img src="img/type_guards.png" />
+				<p>Czyli udowodnijmy kompilatorowi typ danej zmiennej</p>
 			</section>
 
 			<section>
@@ -662,18 +659,20 @@ function padLeft(value: string, padding: <mark>string | number</mark>)
 				</ul>
 			</section>
 
-
+			<section>
+				<h3>Przydatne linki</h3>
+				<ul>
+					<li><a>https://www.typescriptlang.org/docs/home.html</a></li>
+					<li><a>https://www.typescriptlang.org/docs/handbook/advanced-types.html</a></li>
+				</ul>
+			</section>
 			<section class="present" style="top: 103.5px; display: block;">
 				<h1>DZIĘKUJĘ ZA UWAGĘ</h1>
-				<p>
-
-				</p>
+				<p></p>
 				<p>Dawid Czarnik</p>
 				<br>
 				<br>
 				<img src="img/logo.svg" width="27%" alt="" style="background: #191919; border: 0px">
-
-
 			</section>
 
 			<section>
